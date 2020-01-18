@@ -147,11 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="ConsoleUI.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="PacMan.cpp" />
     <ClCompile Include="PacManApp.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Character.hpp" />
+    <ClInclude Include="ConsoleUI.hpp" />
+    <ClInclude Include="Constants.hpp" />
+    <ClInclude Include="CoordinatesXY.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="PacMan.hpp" />
+    <ClInclude Include="Timer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
