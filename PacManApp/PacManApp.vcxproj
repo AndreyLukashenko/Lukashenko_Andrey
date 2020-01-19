@@ -148,19 +148,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="ChaseMode.cpp" />
     <ClCompile Include="ConsoleUI.cpp" />
+    <ClCompile Include="EnterCagePoint.cpp" />
+    <ClCompile Include="FrightenedMode.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="GhostMode.cpp" />
+    <ClCompile Include="InitialMode.cpp" />
+    <ClCompile Include="LeaveGageMode.cpp" />
     <ClCompile Include="PacMan.cpp" />
     <ClCompile Include="PacManApp.cpp" />
+    <ClCompile Include="ScatterMode.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.hpp" />
+    <ClInclude Include="ChaseMode.h" />
     <ClInclude Include="ConsoleUI.hpp" />
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="CoordinatesXY.hpp" />
+    <ClInclude Include="EnterCagePoint.hpp" />
+    <ClInclude Include="FrightenedMode.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Ghost.hpp" />
+    <ClInclude Include="GhostMode.hpp" />
+    <ClInclude Include="InitialMode.hpp" />
+    <ClInclude Include="LeaveGageMode.hpp" />
     <ClInclude Include="PacMan.hpp" />
+    <ClInclude Include="ScatterMode.hpp" />
     <ClInclude Include="Timer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

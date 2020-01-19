@@ -21,6 +21,8 @@ public:
 	virtual bool isCollisionRight() const = 0;
 	void drawCharacter();
 
+	void setColor(CHARACTER_COLOR);
+
 	CoordinatesXY getPosition() const;
 	wchar_t getOldChar() const;
 

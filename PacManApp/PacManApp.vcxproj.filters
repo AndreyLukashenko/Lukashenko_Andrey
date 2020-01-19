@@ -9,6 +9,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\GhostMode">
+      <UniqueIdentifier>{dd7c2a88-c994-41f8-8924-e80eb35be082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GhostMode">
+      <UniqueIdentifier>{22de7ff3-39af-485b-bbdc-6c16bc1f48f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PacManApp.cpp">
@@ -28,6 +34,30 @@
     </ClCompile>
     <ClCompile Include="PacMan.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GhostMode.cpp">
+      <Filter>Исходные файлы\GhostMode</Filter>
+    </ClCompile>
+    <ClCompile Include="InitialMode.cpp">
+      <Filter>Исходные файлы\GhostMode</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseMode.cpp">
+      <Filter>Исходные файлы\GhostMode</Filter>
+    </ClCompile>
+    <ClCompile Include="ScatterMode.cpp">
+      <Filter>Исходные файлы\GhostMode</Filter>
+    </ClCompile>
+    <ClCompile Include="FrightenedMode.cpp">
+      <Filter>Исходные файлы\GhostMode</Filter>
+    </ClCompile>
+    <ClCompile Include="LeaveGageMode.cpp">
+      <Filter>Исходные файлы\GhostMode</Filter>
+    </ClCompile>
+    <ClCompile Include="EnterCagePoint.cpp">
+      <Filter>Исходные файлы\GhostMode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +81,30 @@
     </ClInclude>
     <ClInclude Include="PacMan.hpp">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GhostMode.hpp">
+      <Filter>Файлы заголовков\GhostMode</Filter>
+    </ClInclude>
+    <ClInclude Include="InitialMode.hpp">
+      <Filter>Файлы заголовков\GhostMode</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseMode.h">
+      <Filter>Файлы заголовков\GhostMode</Filter>
+    </ClInclude>
+    <ClInclude Include="ScatterMode.hpp">
+      <Filter>Файлы заголовков\GhostMode</Filter>
+    </ClInclude>
+    <ClInclude Include="FrightenedMode.hpp">
+      <Filter>Файлы заголовков\GhostMode</Filter>
+    </ClInclude>
+    <ClInclude Include="LeaveGageMode.hpp">
+      <Filter>Файлы заголовков\GhostMode</Filter>
+    </ClInclude>
+    <ClInclude Include="EnterCagePoint.hpp">
+      <Filter>Файлы заголовков\GhostMode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

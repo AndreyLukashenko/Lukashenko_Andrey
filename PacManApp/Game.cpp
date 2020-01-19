@@ -4,6 +4,17 @@ Game::Game() : lives_(LIVES), score_(0), speedDelay_(0), gameOver_(false), pacma
 {
 	pacman_ = PacMan::getInstance();
 	console_ = ConsoleUI::getInstance();
+
+	std::shared_ptr<Ghost> blinky = std::make_shared<Ghost>(
+		BLINKY_INITIAL_POINT, 
+		Direction::LEFT, 
+		CHARACTER_COLOR::BLINKY, 
+		CHARACTER_ICON::BLINKY,
+		LEAVE_BLINKY_FRUIT,
+		BLINKY_SCATTER_POINT
+		);
+
+	ghosts_.push_back(blinky);
 }
 
 
@@ -72,33 +83,18 @@ void Game::pacmanMove()
 		pacman_->move();
 	}
 	
-
-
-	
-
-	/*CoordinatesXY position = pacman_->getPosition();
-	if (console_->getChar(position.x, position.y) == FRUIT)
-	{
-		score_ += 10;
-	}*/
-	/*else if (console_->getChar(position.x, position.y) == PILL)
-	{
-		score_ += 50;
-		pacman_->setPacManMode(PACMAN_MODE::GODMODE);
-		timerPacMan_.start();
-	}*/
 }
 
 
 void Game::ghostsMove()
 {
-	/*for (Ghost* ghost : ghosts_)
+	for (std::shared_ptr<Ghost> ghost : ghosts_)
 	{
 		if (ghost != nullptr)
 		{
 			ghost->move();
 		}
-	}*/
+	}
 }
 
 

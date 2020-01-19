@@ -7,6 +7,7 @@
 #include "ConsoleUI.hpp"
 #include "Timer.hpp"
 #include "PacMan.hpp"
+#include "Ghost.hpp"
 
 class Game
 {
@@ -24,7 +25,7 @@ private:
 	int                         score_;
 	bool                        gameOver_;
 	std::shared_ptr<PacMan>     pacman_;
-	//std::vector<Ghost*>         ghosts_;
+	std::vector<std::shared_ptr<Ghost>>         ghosts_;
 	Timer                       timer_;
 	Timer                       timerPacMan_;
 	Timer                       timerGhost_;
