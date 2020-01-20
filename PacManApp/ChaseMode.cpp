@@ -2,21 +2,20 @@
 #include "FrightenedMode.hpp"
 
 
+ChaseMode::ChaseMode()
+{
+    timer_.start();
+}
+
+
 void ChaseMode::targetObject()
 {
     if (ghost_ != nullptr)
     {
-        if (PacMan::getInstance()->getPacManMode() == PACMAN_MODE::GODMODE)
-        {
-            ghost_->changeDirection(ghost_->getdirectionOpposite());
-            ghost_->setColor(CHARACTER_COLOR::FRIGHTENED);
-            ghost_->changeMode(new FrightenedMode());
-        }
-        else
-        {
-            //ghost_->changeDirection(ghost_->getdirectionOpposite());
-        }
-
+        ghost_->changeDirection(ghost_->getDirectionOpposite());
+        ghost_->setColor(CHARACTER_COLOR::FRIGHTENED);
+        ghost_->setPreviousMode(ghost_->getChaseMode());
+        ghost_->changeMode(ghost_->getFrightenedMode());
     }
 }
 

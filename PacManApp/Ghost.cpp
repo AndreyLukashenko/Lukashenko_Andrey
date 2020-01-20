@@ -1,21 +1,24 @@
 #include "Ghost.hpp"
-#include "InitialMode.hpp"
+#include "LeaveCageMode.hpp"
+#include "FrightenedMode.hpp"
+#include "EnterCageMode.hpp"
 
-Ghost::Ghost(CoordinatesXY position, Direction direction, CHARACTER_COLOR color, CHARACTER_ICON icon, int fruitLeave, CoordinatesXY scatterPoint) :
-    Character(position, direction, color, icon), initialColor_(color), fruitLeaveCount_(fruitLeave), scatterPoint_(scatterPoint), 
-	directionOpposite_(Direction::NONE), mode_(nullptr)
+Ghost::Ghost(CoordinatesXY position, Direction direction, CHARACTER_COLOR color, CHARACTER_ICON icon) :
+    Character(position, direction, color, icon), initialColor_(color), directionOpposite_(Direction::NONE), mode_(nullptr)
 {
 	changeDirection(direction);
-	changeMode(new InitialMode(fruitLeave));
 }
 
 
-void Ghost::changeMode(GhostMode* mode)
+void Ghost::changeMode(std::unique_ptr<GhostMode> mode)
 {
-	mode_.reset(mode);
-	//auto test = shared_from_this();
-	mode_->setGhost(this);
-	mode_->targetObject();
+	mode_.reset(mode.release());
+	if (mode_ != nullptr) 
+	{
+		mode_->setGhost(this);
+		mode_->targetObject();
+	}
+	
 }
 
 
@@ -93,37 +96,43 @@ bool Ghost::isCollisionRight() const
 	return Character::isCollisionRight() && mode_->isGateObstructionRight();
 }
 
-void Ghost::setPreviousMode(GhostMode* previousMode)
+void Ghost::setPreviousMode(std::unique_ptr<GhostMode> previousMode)
 {
-	previousMode_.reset(previousMode);
+	previousMode_.reset(previousMode.release());
 }
 
 
-CHARACTER_COLOR Ghost::getInitialColor()
+CHARACTER_COLOR Ghost::getInitialColor() const
 {
 	return initialColor_;
 }
 
 
-int Ghost::getFruitLeaveCount()
-{
-	return fruitLeaveCount_;
-}
-
-
-CoordinatesXY Ghost::getScatterPoint()
-{
-	return scatterPoint_;
-}
-
-
-Direction Ghost::getdirectionOpposite()
+Direction Ghost::getDirectionOpposite() const
 {
 	return directionOpposite_;
 }
 
 
-GhostMode* Ghost::getPreviousMode()
+std::unique_ptr<GhostMode> Ghost::getPreviousMode()
 {
-	return previousMode_.get();
+	return std::move(previousMode_);
+}
+
+
+std::unique_ptr<GhostMode> Ghost::getLeaveCageMode() const
+{
+	return std::make_unique<LeaveCageMode>();
+}
+
+
+std::unique_ptr<GhostMode> Ghost::getFrightenedMode() const
+{
+	return std::make_unique<FrightenedMode>();
+}
+
+
+std::unique_ptr<GhostMode> Ghost::getEnterCageMode() const
+{
+	return std::make_unique<EnterCageMode>();
 }

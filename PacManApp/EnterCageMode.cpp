@@ -1,14 +1,15 @@
+#include "EnterCageMode.hpp"
 #include "LeaveCageMode.hpp"
-#include "ChaseMode.h"
 
 
-void LeaveCageMode::targetObject()
+void EnterCageMode::targetObject()
 {
     if (ghost_ != nullptr)
     {
-        if (ghost_->getPosition() == LEAVE_CAGE_POINT)
+        if (ghost_->getPosition() == ENTER_CAGE_POINT)
         {
-            ghost_->changeMode(ghost_->getChaseMode());
+            ghost_->setColor(ghost_->getInitialColor());
+            ghost_->changeMode(ghost_->getLeaveCageMode());
         }
         else
         {
@@ -20,7 +21,7 @@ void LeaveCageMode::targetObject()
             else
             {
                 CoordinatesXY ghostPosition = ghost_->getPosition();
-                CoordinatesXY target = LEAVE_CAGE_POINT;
+                CoordinatesXY target = ENTER_CAGE_POINT;
 
                 Direction newDirection = directionMeasurement_.computePreferenceDirection(ghostPosition, target, possibleDirections);
                 ghost_->changeDirection(newDirection);
@@ -31,25 +32,25 @@ void LeaveCageMode::targetObject()
 }
 
 
-bool LeaveCageMode::isGateObstructionUp() const
+bool EnterCageMode::isGateObstructionUp() const
 {
     return true;
 }
 
 
-bool LeaveCageMode::isGateObstructionRight() const
+bool EnterCageMode::isGateObstructionRight() const
 {
     return true;
 }
 
 
-bool LeaveCageMode::isGateObstructionDown() const
+bool EnterCageMode::isGateObstructionDown() const
 {
     return true;
 }
 
 
-bool LeaveCageMode::isGateObstructionLeft() const
+bool EnterCageMode::isGateObstructionLeft() const
 {
     return true;
 }

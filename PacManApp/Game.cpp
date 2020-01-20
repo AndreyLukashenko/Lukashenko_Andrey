@@ -1,28 +1,31 @@
 #include "Game.hpp"
+#include "GhostMode.hpp"
 
 Game::Game() : lives_(LIVES), score_(0), speedDelay_(0), gameOver_(false), pacman_(nullptr), console_(nullptr)
 {
 	pacman_ = PacMan::getInstance();
 	console_ = ConsoleUI::getInstance();
-
-	std::shared_ptr<Ghost> blinky = std::make_shared<Ghost>(
-		BLINKY_INITIAL_POINT, 
-		Direction::LEFT, 
-		CHARACTER_COLOR::BLINKY, 
-		CHARACTER_ICON::BLINKY,
-		LEAVE_BLINKY_FRUIT,
-		BLINKY_SCATTER_POINT
-		);
-
+	drawMaze();
+	std::shared_ptr<Ghost> blinky = Blinky::getInstance();
 	ghosts_.push_back(blinky);
+
+	std::shared_ptr<Ghost> pinky = Pinky::getInstance();
+	ghosts_.push_back(pinky);
+
+	std::shared_ptr<Ghost> inky = Inky::getInstance();
+	ghosts_.push_back(inky);
+
+	std::shared_ptr<Ghost> clyde = Clyde::getInstance();
+	ghosts_.push_back(clyde);
+
+	timerPauseStart_.start();
 }
 
 
 void Game::run() 
 {
 	int deltaTime = 0;
-	drawMaze();
-
+	
 	while (true) {
 		timer_.start();
 		if (!gameOver_)
@@ -44,12 +47,15 @@ void Game::updateGameField(float deltaTime)
 {
 	speedDelay_ += deltaTime;
 
-	if (speedDelay_ > GAME_SPEED) {
-		speedDelay_ = 0;
-		pacmanMove();
-		ghostsMove();
+	if (timerPauseStart_.elapsedSeconds() > GAME_START_DELAY)
+	{
+		if (speedDelay_ > GAME_SPEED) {
+			speedDelay_ = 0;
+			pacmanMove();
+			ghostsMove();
+		}
 	}
-
+	
 	showScore();
 	showLives();
 	gameOver();
@@ -81,6 +87,7 @@ void Game::pacmanMove()
 		}
 
 		pacman_->move();
+		checkForDeath();
 	}
 	
 }
@@ -93,6 +100,7 @@ void Game::ghostsMove()
 		if (ghost != nullptr)
 		{
 			ghost->move();
+			checkForDeath();
 		}
 	}
 }
@@ -114,20 +122,45 @@ void Game::showLives() const
 }
 
 
-void Game::resetGame() const 
+void Game::checkForDeath()
 {
-	/*pacman_->setInitialPosition(pacman_->getInitialPosition());
-	pacman_->setDirection(pacman_->getInitialDirection());
-	for (Ghost* ghost : ghosts_) {
+	for (std::shared_ptr<Ghost> ghost : ghosts_)
+	{
+		if (ghost != nullptr)
+		{
+			if (pacman_->getPosition() == ghost->getPosition())
+			{
+				if (pacman_->getPacManMode() == PACMAN_MODE::NORMAL)
+				{
+					--lives_;
+					if (lives_ > 0)
+						resetGame();
+				}
+				else
+				{
+					ghost->setColor(CHARACTER_COLOR::ENTERMODE);
+					ghost->changeMode(ghost->getEnterCageMode());
+				}
+			}
+		}
+	}
+}
+
+
+void Game::resetGame() 
+{
+	pacman_->reset();
+	for (std::shared_ptr<Ghost> ghost : ghosts_) {
 		if (ghost != nullptr)
 			ghost->reset();
-	}*/
+	}
+	timerPauseStart_.start();
 }
 
 
 void Game::gameOver() 
 {
-	if (lives_ == 0) {
+	if (lives_ <= 0) {
 		gameOver_ = true;
 		std::string message = "You lose";
 		for (int i = 0; i < message.length(); ++i) {
@@ -159,6 +192,21 @@ void Game::drawMaze() const
 				break;
 			case PILL:
 				console_->setChar(x, y, maze[y][x], COLOR::GREEN);
+				break;
+			case static_cast<char>(CHARACTER_ICON::PACMAN_LEFT):
+				console_->setChar(x, y, maze[y][x], static_cast<COLOR>(CHARACTER_COLOR::PACMAN));
+				break;
+			case static_cast<char>(CHARACTER_ICON::BLINKY) :
+				console_->setChar(x, y, maze[y][x], static_cast<COLOR>(CHARACTER_COLOR::BLINKY));
+				break;
+			case static_cast<char>(CHARACTER_ICON::INKY) :
+				console_->setChar(x, y, maze[y][x], static_cast<COLOR>(CHARACTER_COLOR::INKY));
+				break;
+			case static_cast<char>(CHARACTER_ICON::PINKY) :
+				console_->setChar(x, y, maze[y][x], static_cast<COLOR>(CHARACTER_COLOR::PINKY));
+				break;
+			case static_cast<char>(CHARACTER_ICON::CLYDE) :
+				console_->setChar(x, y, maze[y][x], static_cast<COLOR>(CHARACTER_COLOR::CLYDE));
 				break;
 			default:
 				console_->setChar(x, y, maze[y][x], COLOR::WHITE);

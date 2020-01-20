@@ -24,6 +24,7 @@ public:
 	void setColor(CHARACTER_COLOR);
 
 	CoordinatesXY getPosition() const;
+	Direction getDirection() const;
 	wchar_t getOldChar() const;
 
 protected:

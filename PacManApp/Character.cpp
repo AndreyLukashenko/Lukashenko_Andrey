@@ -77,6 +77,12 @@ void Character::setColor(CHARACTER_COLOR color)
 }
 
 
+Direction Character::getDirection() const
+{
+	return direction_;
+}
+
+
 CoordinatesXY Character::getPosition() const
 {
 	return position_;

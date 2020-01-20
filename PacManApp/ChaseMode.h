@@ -3,11 +3,12 @@
 
 #include "GhostMode.hpp"
 #include "PacMan.hpp"
+#include "Timer.hpp"
 
 class ChaseMode : public GhostMode
 {
 public:
-    ChaseMode() = default;
+    ChaseMode();
     ChaseMode(const ChaseMode&) = delete;
     ChaseMode& operator=(const ChaseMode&) = delete;
     ~ChaseMode() = default;
@@ -18,6 +19,8 @@ public:
     virtual bool isGateObstructionDown() const override;
     virtual bool isGateObstructionLeft() const override;
 
+protected:
+    Timer timer_;
 };
 
 #endif // !CHASE_MODE_H

@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "Ghost.hpp"
+#include "DirectionMeasurement.hpp"
 
 class GhostMode
 {
@@ -24,6 +25,7 @@ public:
 protected:
 	//std::weak_ptr<Ghost> ghost_;
 	Ghost* ghost_;
+	DirectionMeasurement directionMeasurement_;
 };
 
 #endif // !GHOST_MODE_H

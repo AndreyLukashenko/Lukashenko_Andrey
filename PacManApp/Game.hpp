@@ -8,6 +8,10 @@
 #include "Timer.hpp"
 #include "PacMan.hpp"
 #include "Ghost.hpp"
+#include "Blinky.hpp"
+#include "Pinky.hpp"
+#include "Inky.hpp"
+#include "Clyde.hpp"
 
 class Game
 {
@@ -27,8 +31,8 @@ private:
 	std::shared_ptr<PacMan>     pacman_;
 	std::vector<std::shared_ptr<Ghost>>         ghosts_;
 	Timer                       timer_;
+	Timer                       timerPauseStart_;
 	Timer                       timerPacMan_;
-	Timer                       timerGhost_;
 	std::shared_ptr<ConsoleUI>  console_;
 
 	void updateGameField(float deltaTime);
@@ -36,7 +40,8 @@ private:
 	void ghostsMove();
 	void showScore() const;
 	void showLives() const;
-	void resetGame() const;
+	void checkForDeath();
+	void resetGame();
 	void gameOver();
 	void drawMaze() const;
 

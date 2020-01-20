@@ -12,7 +12,17 @@ void FrightenedMode::targetObject()
         }
         else
         {
-            //ghost_->changeDirection(ghost_->getdirectionOpposite());
+            std::vector<Direction> possibleDirections = directionMeasurement_.computePossibleDirections(*ghost_);
+            if (possibleDirections.size() == 1)
+            {
+                ghost_->changeDirection(possibleDirections[0]);
+            }
+            else
+            {
+                
+                Direction newDirection = possibleDirections[rand() % possibleDirections.size()];
+                ghost_->changeDirection(newDirection);
+            }
         }
 
     }

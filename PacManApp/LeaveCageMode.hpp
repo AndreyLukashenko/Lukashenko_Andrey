@@ -1,15 +1,15 @@
-#ifndef ENTER_CAGE_POINT_H
-#define ENTER_CAGE_POINT_H
+#ifndef LEAVE_CAGE_MODE_H
+#define LEAVE_CAGE_MODE_H
 
 #include "GhostMode.hpp"
 
-class EnterCagePoint : GhostMode
+class LeaveCageMode : public GhostMode
 {
 public:
-    EnterCagePoint() = default;
-    EnterCagePoint(const EnterCagePoint&) = delete;
-    EnterCagePoint& operator=(const EnterCagePoint&) = delete;
-    ~EnterCagePoint() = default;
+    LeaveCageMode() = default;
+    LeaveCageMode(const LeaveCageMode&) = delete;
+    LeaveCageMode& operator=(const LeaveCageMode&) = delete;
+    ~LeaveCageMode() = default;
 
     virtual void targetObject() override;
     virtual bool isGateObstructionUp() const override;
@@ -18,6 +18,7 @@ public:
     virtual bool isGateObstructionLeft() const override;
 };
 
-#endif // !ENTER_CAGE_POINT_H
+#endif // !LEAVE_CAGE_MODE_H
+
 
 

@@ -3,18 +3,19 @@
 
 #include "Character.hpp"
 
+
 class GhostMode;
 
-class Ghost : public Character, public std::enable_shared_from_this<Ghost>
+class Ghost : public Character
 {
 public:
     Ghost() = delete;
-    Ghost(CoordinatesXY, Direction, CHARACTER_COLOR, CHARACTER_ICON, int fruitLeave, CoordinatesXY);
+    Ghost(CoordinatesXY, Direction, CHARACTER_COLOR, CHARACTER_ICON);
     Ghost(const Ghost&) = delete;
     Ghost& operator=(const Ghost&) = delete;
     ~Ghost() = default;
 
-    void changeMode(GhostMode* mode);
+    void changeMode(std::unique_ptr<GhostMode> mode);
 
     void targetObject();
     virtual void move() override;
@@ -23,19 +24,23 @@ public:
     virtual bool isCollisionDown() const override;
     virtual bool isCollisionLeft() const override;
     virtual bool isCollisionRight() const override;
+    virtual void reset() = 0;
 
-    void setPreviousMode(GhostMode* previousMode);
+    void setPreviousMode(std::unique_ptr<GhostMode> previousMode);
 
-    CHARACTER_COLOR getInitialColor();
-    int getFruitLeaveCount();
-    CoordinatesXY getScatterPoint();
-    Direction getdirectionOpposite();
-    GhostMode* getPreviousMode();
+    CHARACTER_COLOR getInitialColor() const;
+    Direction getDirectionOpposite() const;
+    std::unique_ptr<GhostMode> getPreviousMode();
+
+    virtual std::unique_ptr<GhostMode> getInitialMode() const = 0;
+    std::unique_ptr<GhostMode> getLeaveCageMode() const;
+    virtual std::unique_ptr<GhostMode> getChaseMode() const = 0;
+    virtual std::unique_ptr<GhostMode> getScatterMode() const = 0;
+    std::unique_ptr<GhostMode> getFrightenedMode() const;
+    std::unique_ptr<GhostMode> getEnterCageMode() const;
 
 private:
     CHARACTER_COLOR initialColor_;
-    int fruitLeaveCount_;
-    CoordinatesXY scatterPoint_;
     Direction directionOpposite_;
     std::unique_ptr<GhostMode> mode_;
     std::unique_ptr<GhostMode> previousMode_;

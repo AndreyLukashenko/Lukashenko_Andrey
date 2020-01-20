@@ -3,6 +3,7 @@
 
 #include "GhostMode.hpp"
 #include "PacMan.hpp"
+#include "Timer.hpp"
 
 class ScatterMode : public GhostMode
 {
@@ -20,6 +21,7 @@ public:
 
 private:
     CoordinatesXY cornerPoint_;
+    Timer timer_;
 };
 
 #endif // !SCATTER_MODE_H

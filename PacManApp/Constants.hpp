@@ -4,6 +4,7 @@
 #include "CoordinatesXY.hpp"
 
 // GAME
+const float GAME_START_DELAY = 2.0F;
 const float GAME_SPEED = 0.175f;
 const int LIVES = 3;
 const int FRUIT_COUNT = 240;
@@ -43,11 +44,11 @@ const char maze[FIELD_HEIGHT][FIELD_WIDTH + 1] = {
         "#******##****##****##******#",
         "######*##### ## #####*######",
         "     #*##### ## #####*#     ",
-        "     #*##          ##*#     ",
+        "     #*##    B     ##*#     ",
         "     #*## ###--### ##*#     ",
         "######*## #      # ##*######",
-        "      *   #      #   *      ",
-        "######*## #      # ##*######",
+        "      *   #  I   #   *      ",
+        "######*## #P    C# ##*######",
         "     #*## ######## ##*#     ",
         "     #*##          ##*#     ",
         "     #*## ######## ##*#     ",
@@ -55,7 +56,7 @@ const char maze[FIELD_HEIGHT][FIELD_WIDTH + 1] = {
         "#************##************#",
         "#*####*#####*##*#####*####*#",
         "#$####*#####*##*#####*####$#",
-        "#***##*******  *******##***#",
+        "#***##*******> *******##***#",
         "###*##*##*########*##*##*###",
         "###*##*##*########*##*##*###",
         "#******##****##****##******#",
@@ -125,8 +126,13 @@ const int LEAVE_PINKY_FRUIT = 5;
 const int LEAVE_INKY_FRUIT = 40;
 const int LEAVE_CLYDE_FRUIT = 75;
 
+const int PINKY_POSITION_OFFSET = 4;
+const int INKY_POSITION_OFFSET = 2;
+
+const double DISTANCE_CLYDE_MODE = 8;
+
 const double TIMER_CHASE_MODE = 20.0;
-const double TIMER_SCATTER_MODE = 28.0;
+const double TIMER_SCATTER_MODE = 7.0;
 
 // INITIAL POINTS
 const CoordinatesXY BLINKY_INITIAL_POINT{ 13, 11 };
@@ -143,8 +149,8 @@ const CoordinatesXY ENTER_CAGE_POINT{ 13, 14 };
 // SCATTER POINTS
 const CoordinatesXY BLINKY_SCATTER_POINT{ 25, -1 };
 const CoordinatesXY PINKY_SCATTER_POINT{ 2, 1 };
-const CoordinatesXY CLYDE_SCATTER_POINT{ 0, 31 };
-const CoordinatesXY INKY_SCATTER_POINT{ 27, 31 };
+const CoordinatesXY CLYDE_SCATTER_POINT{ 1, 31 };
+const CoordinatesXY INKY_SCATTER_POINT{ 26, 31 };
 
 #endif // !CONSTANTS_H
 

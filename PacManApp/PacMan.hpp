@@ -20,6 +20,7 @@ public:
 	virtual bool isCollisionDown() const override;
 	virtual bool isCollisionLeft() const override;
 	virtual bool isCollisionRight() const override;
+	void reset();
 
 	void setPacManMode(PACMAN_MODE);
 

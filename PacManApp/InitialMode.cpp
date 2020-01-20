@@ -1,5 +1,5 @@
 #include "InitialMode.hpp"
-#include "LeaveGageMode.hpp"
+#include "LeaveCageMode.hpp"
 
 
 InitialMode::InitialMode(int fruitLeave) : GhostMode(), fruitLeave_(fruitLeave)
@@ -12,13 +12,13 @@ void InitialMode::targetObject()
 {
     if (ghost_ != nullptr)
     {
-        if (fruitLeave_ == PacMan::getInstance()->getFruitEaten())
+        if (fruitLeave_ <= PacMan::getInstance()->getFruitEaten())
         {
-            ghost_->changeMode(new LeaveGageMode());
+            ghost_->changeMode(ghost_->getLeaveCageMode());
         }
         else
         {
-            ghost_->changeDirection(ghost_->getdirectionOpposite());
+            ghost_->changeDirection(ghost_->getDirectionOpposite());
         }
         
     }

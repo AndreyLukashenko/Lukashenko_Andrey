@@ -15,6 +15,18 @@
     <Filter Include="Файлы заголовков\GhostMode">
       <UniqueIdentifier>{22de7ff3-39af-485b-bbdc-6c16bc1f48f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Ghosts">
+      <UniqueIdentifier>{377464a8-f614-4f26-963f-65e27a3c8a7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Ghosts">
+      <UniqueIdentifier>{616d2459-8464-4a11-b15b-11dc09630add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GhostMode\ChaseModes">
+      <UniqueIdentifier>{c2218de8-6f56-4b1e-b5c1-0dd48831d9d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GhostMode\ChaseModes">
+      <UniqueIdentifier>{8e3c77eb-c2e8-440c-9952-6fffd26869ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PacManApp.cpp">
@@ -56,8 +68,35 @@
     <ClCompile Include="LeaveGageMode.cpp">
       <Filter>Исходные файлы\GhostMode</Filter>
     </ClCompile>
-    <ClCompile Include="EnterCagePoint.cpp">
+    <ClCompile Include="DirectionMeasurement.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="EnterCageMode.cpp">
       <Filter>Исходные файлы\GhostMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Blinky.cpp">
+      <Filter>Исходные файлы\Ghosts</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinky.cpp">
+      <Filter>Исходные файлы\Ghosts</Filter>
+    </ClCompile>
+    <ClCompile Include="Inky.cpp">
+      <Filter>Исходные файлы\Ghosts</Filter>
+    </ClCompile>
+    <ClCompile Include="Clyde.cpp">
+      <Filter>Исходные файлы\Ghosts</Filter>
+    </ClCompile>
+    <ClCompile Include="BlinkyChaseMode.cpp">
+      <Filter>Исходные файлы\GhostMode\ChaseModes</Filter>
+    </ClCompile>
+    <ClCompile Include="PinkyChaseMode.cpp">
+      <Filter>Исходные файлы\GhostMode\ChaseModes</Filter>
+    </ClCompile>
+    <ClCompile Include="InkyChaseMode.cpp">
+      <Filter>Исходные файлы\GhostMode\ChaseModes</Filter>
+    </ClCompile>
+    <ClCompile Include="ClydeChaseMode.cpp">
+      <Filter>Исходные файлы\GhostMode\ChaseModes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,11 +139,44 @@
     <ClInclude Include="FrightenedMode.hpp">
       <Filter>Файлы заголовков\GhostMode</Filter>
     </ClInclude>
-    <ClInclude Include="LeaveGageMode.hpp">
+    <ClInclude Include="DirectionMeasurement.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="EnterCageMode.hpp">
       <Filter>Файлы заголовков\GhostMode</Filter>
     </ClInclude>
-    <ClInclude Include="EnterCagePoint.hpp">
+    <ClInclude Include="LeaveCageMode.hpp">
       <Filter>Файлы заголовков\GhostMode</Filter>
     </ClInclude>
+    <ClInclude Include="Blinky.hpp">
+      <Filter>Файлы заголовков\Ghosts</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinky.hpp">
+      <Filter>Файлы заголовков\Ghosts</Filter>
+    </ClInclude>
+    <ClInclude Include="Inky.hpp">
+      <Filter>Файлы заголовков\Ghosts</Filter>
+    </ClInclude>
+    <ClInclude Include="Clyde.hpp">
+      <Filter>Файлы заголовков\Ghosts</Filter>
+    </ClInclude>
+    <ClInclude Include="BlinkyChaseMode.hpp">
+      <Filter>Файлы заголовков\GhostMode\ChaseModes</Filter>
+    </ClInclude>
+    <ClInclude Include="PinkyChaseMode.hpp">
+      <Filter>Файлы заголовков\GhostMode\ChaseModes</Filter>
+    </ClInclude>
+    <ClInclude Include="InkyChaseMode.hpp">
+      <Filter>Файлы заголовков\GhostMode\ChaseModes</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ClydeChaseMode.h">
+      <Filter>Файлы заголовков\GhostMode\ChaseModes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PacManApp1.rc" />
   </ItemGroup>
 </Project>

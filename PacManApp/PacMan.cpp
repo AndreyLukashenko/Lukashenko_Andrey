@@ -2,7 +2,7 @@
 
 
 PacMan::PacMan() : Character(PACMAN_INITIAL_POSITION, Direction::LEFT, CHARACTER_COLOR::PACMAN, CHARACTER_ICON::PACMAN_LEFT), 
-	fruitEaten_(0)
+	fruitEaten_(0), mode_(PACMAN_MODE::NORMAL)
 {
 
 }
@@ -97,6 +97,16 @@ bool PacMan::isCollisionRight() const
 	return Character::isCollisionRight() && console_->getChar(position_.x + 1, position_.y - 1) != GATE;
 }
 
+
+void PacMan::reset()
+{
+	console_->setChar(position_.x, position_.y, oldChar_, COLOR::BLACK);
+	position_ = PACMAN_INITIAL_POSITION;
+	direction_ = Direction::LEFT;
+	icon_ = CHARACTER_ICON::PACMAN_LEFT;
+	mode_ = PACMAN_MODE::NORMAL;
+	drawCharacter();
+}
 
 
 void PacMan::setPacManMode(PACMAN_MODE mode)
