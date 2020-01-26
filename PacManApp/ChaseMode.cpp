@@ -10,13 +10,13 @@ ChaseMode::ChaseMode()
 
 void ChaseMode::targetObject()
 {
-    if (ghost_ != nullptr)
-    {
-        ghost_->changeDirection(ghost_->getDirectionOpposite());
-        ghost_->setColor(CHARACTER_COLOR::FRIGHTENED);
-        ghost_->setPreviousMode(ghost_->getChaseMode());
-        ghost_->changeMode(ghost_->getFrightenedMode());
-    }
+   
+}
+
+
+bool ChaseMode::isPacManCollision()
+{
+    return true;
 }
 
 

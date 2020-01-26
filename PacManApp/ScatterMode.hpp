@@ -14,6 +14,7 @@ public:
     ScatterMode& operator=(const ScatterMode&) = delete;
 
     virtual void targetObject() override;
+    virtual bool isPacManCollision() override;
     virtual bool isGateObstructionUp() const override;
     virtual bool isGateObstructionRight() const override;
     virtual bool isGateObstructionDown() const override;
@@ -21,7 +22,7 @@ public:
 
 private:
     CoordinatesXY cornerPoint_;
-    Timer timer_;
+    Timer         timer_;
 };
 
 #endif // !SCATTER_MODE_H

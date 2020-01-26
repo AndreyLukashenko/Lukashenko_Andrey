@@ -5,13 +5,13 @@
 
 Blinky::Blinky() : Ghost(BLINKY_INITIAL_POINT, Direction::LEFT, CHARACTER_COLOR::BLINKY, CHARACTER_ICON::BLINKY)
 {
-    changeMode(getInitialMode());
+    changeMode(getChaseMode());
 }
 
 
-std::shared_ptr<Blinky> Blinky::getInstance()
+Blinky& Blinky::getInstance()
 {
-    static std::shared_ptr<Blinky> instance_ = std::make_shared<Blinky>();
+    static Blinky instance_;
 
     return instance_;
 }
@@ -19,18 +19,10 @@ std::shared_ptr<Blinky> Blinky::getInstance()
 
 void Blinky::reset()
 {
-    if (oldChar_ == FRUIT || oldChar_ == GATE)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::WHITE);
-    else if (oldChar_ == PILL)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::GREEN);
-    else
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::BLACK);
-
     position_ = oldPosition_ = BLINKY_INITIAL_POINT;
     changeDirection(Direction::LEFT);
     color_ = CHARACTER_COLOR::BLINKY;
-    changeMode(getInitialMode());
-    oldChar_ = SPACE;
+    changeMode(getChaseMode());
     drawCharacter();
 }
 

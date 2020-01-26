@@ -4,11 +4,7 @@
 
 void InkyChaseMode::targetObject()
 {
-    if (PacMan::getInstance()->getPacManMode() == PACMAN_MODE::GODMODE)
-    {
-        ChaseMode::targetObject();
-    }
-    else if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
+    if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
     {
         ghost_->changeMode(ghost_->getScatterMode());
     }
@@ -22,10 +18,10 @@ void InkyChaseMode::targetObject()
         else
         {
             CoordinatesXY ghostPosition = ghost_->getPosition();
-            CoordinatesXY pacmanPosition = PacMan::getInstance()->getPosition();
-            Direction pacmanDirection = PacMan::getInstance()->getDirection();
+            CoordinatesXY pacmanPosition = PacMan::getInstance().getPosition();
+            Direction pacmanDirection = PacMan::getInstance().getDirection();
             CoordinatesXY pacmanPointOffset = directionMeasurement_.computeTargetPoint(pacmanDirection, pacmanPosition, INKY_POSITION_OFFSET);
-            CoordinatesXY blinkyPosition = Blinky::getInstance()->getPosition();
+            CoordinatesXY blinkyPosition = Blinky::getInstance().getPosition();
             CoordinatesXY difference = { pacmanPointOffset.x - blinkyPosition.x, pacmanPointOffset.y - blinkyPosition.y };
             CoordinatesXY differenceLengthen = { difference.x * 2, difference.y * 2 };
             CoordinatesXY target = { blinkyPosition.x + differenceLengthen.x, blinkyPosition.y + differenceLengthen.y };

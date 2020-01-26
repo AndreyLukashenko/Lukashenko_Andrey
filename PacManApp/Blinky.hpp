@@ -6,18 +6,18 @@
 class Blinky : public Ghost
 {
 public:
-    Blinky();
     Blinky(const Blinky&) = delete;
     Blinky& operator=(const Blinky&) = delete;
-    ~Blinky() = default;
 
-    static std::shared_ptr<Blinky> getInstance();
-
-    virtual void reset() override;
+    static Blinky&                     getInstance();
+    virtual void                       reset() override;
     virtual std::unique_ptr<GhostMode> getInitialMode() const override;
     virtual std::unique_ptr<GhostMode> getChaseMode() const override;
     virtual std::unique_ptr<GhostMode> getScatterMode() const override;
 
+private:
+    Blinky();
+    ~Blinky() = default;
 };
 
 #endif // !BLINKY_H

@@ -9,9 +9,9 @@ Pinky::Pinky() : Ghost(PINKY_INITIAL_POINT, Direction::UP, CHARACTER_COLOR::PINK
 }
 
 
-std::shared_ptr<Pinky> Pinky::getInstance()
+Pinky& Pinky::getInstance()
 {
-    static std::shared_ptr<Pinky> instance_ = std::make_shared<Pinky>();
+    static Pinky instance_;
 
     return instance_;
 }
@@ -19,18 +19,10 @@ std::shared_ptr<Pinky> Pinky::getInstance()
 
 void Pinky::reset()
 {
-    if (oldChar_ == FRUIT || oldChar_ == GATE)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::WHITE);
-    else if (oldChar_ == PILL)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::GREEN);
-    else
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::BLACK);
-
     position_ = oldPosition_ = PINKY_INITIAL_POINT;
     changeDirection(Direction::UP);
     color_ = CHARACTER_COLOR::PINKY;
     changeMode(getInitialMode());
-    oldChar_ = SPACE;
     drawCharacter();
 }
 

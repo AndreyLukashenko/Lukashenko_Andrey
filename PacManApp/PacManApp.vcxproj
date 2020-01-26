@@ -164,6 +164,7 @@
     <ClCompile Include="Inky.cpp" />
     <ClCompile Include="InkyChaseMode.cpp" />
     <ClCompile Include="LeaveGageMode.cpp" />
+    <ClCompile Include="Maze.cpp" />
     <ClCompile Include="PacMan.cpp" />
     <ClCompile Include="PacManApp.cpp" />
     <ClCompile Include="Pinky.cpp" />
@@ -191,15 +192,12 @@
     <ClInclude Include="Inky.hpp" />
     <ClInclude Include="InkyChaseMode.hpp" />
     <ClInclude Include="LeaveCageMode.hpp" />
+    <ClInclude Include="Maze.h" />
     <ClInclude Include="PacMan.hpp" />
     <ClInclude Include="Pinky.hpp" />
     <ClInclude Include="PinkyChaseMode.hpp" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ScatterMode.hpp" />
     <ClInclude Include="Timer.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="PacManApp1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

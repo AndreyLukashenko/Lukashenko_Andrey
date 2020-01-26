@@ -14,6 +14,7 @@ public:
     ~ChaseMode() = default;
 
     virtual void targetObject() override;
+    virtual bool isPacManCollision() override;
     virtual bool isGateObstructionUp() const override;
     virtual bool isGateObstructionRight() const override;
     virtual bool isGateObstructionDown() const override;

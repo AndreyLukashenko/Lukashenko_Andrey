@@ -16,9 +16,9 @@ public:
     ~DirectionMeasurement() = default;
 
     std::vector<Direction> computePossibleDirections(const Ghost& ghost) const;
-    double computeDistance(const CoordinatesXY& startPoint, const CoordinatesXY& endPoint) const;
-    Direction computePreferenceDirection(const CoordinatesXY& ghost, const CoordinatesXY& target, const std::vector<Direction>& possibleDirections) const;
-    CoordinatesXY computeTargetPoint(const Direction direction, const CoordinatesXY& ghost, int offset) const;
+    double                 computeDistance(const CoordinatesXY& startPoint, const CoordinatesXY& endPoint) const;
+    Direction              computePreferenceDirection(const CoordinatesXY& ghost, const CoordinatesXY& target, const std::vector<Direction>& possibleDirections) const;
+    CoordinatesXY          computeTargetPoint(const Direction direction, const CoordinatesXY& ghost, int offset) const;
 };
 
 #endif // !DIRECTION_MEASUREMENT_H

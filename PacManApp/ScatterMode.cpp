@@ -11,11 +11,12 @@ void ScatterMode::targetObject()
 {
     if (ghost_ != nullptr)
     {
-        if (PacMan::getInstance()->getPacManMode() == PACMAN_MODE::GODMODE)
+        if (PacMan::getInstance().getPacManMode() == PACMAN_MODE::GODMODE)
         {
             ghost_->changeDirection(ghost_->getDirectionOpposite());
             ghost_->setColor(CHARACTER_COLOR::FRIGHTENED);
             ghost_->setPreviousMode(ghost_->getScatterMode());
+            ghost_->setCurrentSpeed(ghost_->getFrightenedSpeed());
             ghost_->changeMode(ghost_->getFrightenedMode());
         }
         else if (timer_.elapsedSeconds() > TIMER_SCATTER_MODE)
@@ -40,6 +41,12 @@ void ScatterMode::targetObject()
         }
 
     }
+}
+
+
+bool ScatterMode::isPacManCollision()
+{
+    return true;
 }
 
 

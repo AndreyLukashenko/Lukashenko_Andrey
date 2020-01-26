@@ -9,9 +9,9 @@ Inky::Inky() : Ghost(INKY_INITIAL_POINT, Direction::DOWN, CHARACTER_COLOR::INKY,
 }
 
 
-std::shared_ptr<Inky> Inky::getInstance()
+Inky& Inky::getInstance()
 {
-    static std::shared_ptr<Inky> instance_ = std::make_shared<Inky>();
+    static Inky instance_;
 
     return instance_;
 }
@@ -19,18 +19,10 @@ std::shared_ptr<Inky> Inky::getInstance()
 
 void Inky::reset()
 {
-    if (oldChar_ == FRUIT || oldChar_ == GATE)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::WHITE);
-    else if (oldChar_ == PILL)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::GREEN);
-    else
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::BLACK);
-
     position_ = oldPosition_ = INKY_INITIAL_POINT;
     changeDirection(Direction::DOWN);
     color_ = CHARACTER_COLOR::INKY;
     changeMode(getInitialMode());
-    oldChar_ = SPACE;
     drawCharacter();
 }
 

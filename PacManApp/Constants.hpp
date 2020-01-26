@@ -6,6 +6,9 @@
 // GAME
 const float GAME_START_DELAY = 2.0F;
 const float GAME_SPEED = 0.175f;
+const double GHOST_BASIC_SPEED = 0.18;
+const double GHOST_FRIGHTENED_SPEED = 0.25;
+const double GHOST_ENTERCAGE_SPEED = 0.03;
 const int LIVES = 3;
 const int FRUIT_COUNT = 240;
 enum class COLOR
@@ -44,11 +47,11 @@ const char maze[FIELD_HEIGHT][FIELD_WIDTH + 1] = {
         "#******##****##****##******#",
         "######*##### ## #####*######",
         "     #*##### ## #####*#     ",
-        "     #*##    B     ##*#     ",
+        "     #*##          ##*#     ",
         "     #*## ###--### ##*#     ",
         "######*## #      # ##*######",
-        "      *   #  I   #   *      ",
-        "######*## #P    C# ##*######",
+        "      *   #      #   *      ",
+        "######*## #      # ##*######",
         "     #*## ######## ##*#     ",
         "     #*##          ##*#     ",
         "     #*## ######## ##*#     ",
@@ -56,7 +59,7 @@ const char maze[FIELD_HEIGHT][FIELD_WIDTH + 1] = {
         "#************##************#",
         "#*####*#####*##*#####*####*#",
         "#$####*#####*##*#####*####$#",
-        "#***##*******> *******##***#",
+        "#***##*******  *******##***#",
         "###*##*##*########*##*##*###",
         "###*##*##*########*##*##*###",
         "#******##****##****##******#",
@@ -121,10 +124,10 @@ enum class PACMAN_MODE
 };
 
 // GHOSTS
-const int LEAVE_BLINKY_FRUIT = 0;
-const int LEAVE_PINKY_FRUIT = 5;
-const int LEAVE_INKY_FRUIT = 40;
-const int LEAVE_CLYDE_FRUIT = 75;
+const int LEAVE_BLINKY_FRUIT = 240;
+const int LEAVE_PINKY_FRUIT = 235;
+const int LEAVE_INKY_FRUIT = 200;
+const int LEAVE_CLYDE_FRUIT = 160;
 
 const int PINKY_POSITION_OFFSET = 4;
 const int INKY_POSITION_OFFSET = 2;

@@ -5,9 +5,10 @@ void FrightenedMode::targetObject()
 {
     if (ghost_ != nullptr)
     {
-        if (PacMan::getInstance()->getPacManMode() == PACMAN_MODE::NORMAL)
+        if (PacMan::getInstance().getPacManMode() == PACMAN_MODE::NORMAL)
         {
             ghost_->setColor(ghost_->getInitialColor());
+            ghost_->setCurrentSpeed(ghost_->getBasicSpeed());
             ghost_->changeMode(ghost_->getPreviousMode());
         }
         else
@@ -19,13 +20,21 @@ void FrightenedMode::targetObject()
             }
             else
             {
-                
+
                 Direction newDirection = possibleDirections[rand() % possibleDirections.size()];
                 ghost_->changeDirection(newDirection);
             }
         }
-
     }
+}
+
+
+bool FrightenedMode::isPacManCollision()
+{
+    ghost_->setColor(CHARACTER_COLOR::ENTERMODE);
+    ghost_->setCurrentSpeed(ghost_->getEnterCageSpeed());
+    ghost_->changeMode(ghost_->getEnterCageMode());
+    return false;
 }
 
 

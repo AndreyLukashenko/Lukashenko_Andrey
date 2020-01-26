@@ -1,7 +1,6 @@
 #include "InitialMode.hpp"
 #include "LeaveCageMode.hpp"
 
-
 InitialMode::InitialMode(int fruitLeave) : GhostMode(), fruitLeave_(fruitLeave)
 {
 
@@ -12,7 +11,7 @@ void InitialMode::targetObject()
 {
     if (ghost_ != nullptr)
     {
-        if (fruitLeave_ <= PacMan::getInstance()->getFruitEaten())
+        if (fruitLeave_ >= Game::getFruitCount())
         {
             ghost_->changeMode(ghost_->getLeaveCageMode());
         }
@@ -22,6 +21,12 @@ void InitialMode::targetObject()
         }
         
     }
+}
+
+
+bool InitialMode::isPacManCollision()
+{
+    return false;
 }
 
 

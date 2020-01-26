@@ -3,11 +3,7 @@
 
 void BlinkyChaseMode::targetObject()
 {
-    if (PacMan::getInstance()->getPacManMode() == PACMAN_MODE::GODMODE)
-    {
-        ChaseMode::targetObject();
-    }
-    else if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
+    if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
     {
         ghost_->changeMode(ghost_->getScatterMode());
     }
@@ -21,7 +17,7 @@ void BlinkyChaseMode::targetObject()
         else
         {
             CoordinatesXY ghostPosition = ghost_->getPosition();
-            CoordinatesXY target = PacMan::getInstance()->getPosition();
+            CoordinatesXY target = PacMan::getInstance().getPosition();
 
             Direction newDirection = directionMeasurement_.computePreferenceDirection(ghostPosition, target, possibleDirections);
             ghost_->changeDirection(newDirection);

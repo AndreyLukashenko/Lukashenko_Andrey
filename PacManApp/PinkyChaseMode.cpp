@@ -3,11 +3,7 @@
 
 void PinkyChaseMode::targetObject()
 {
-    if (PacMan::getInstance()->getPacManMode() == PACMAN_MODE::GODMODE)
-    {
-        ChaseMode::targetObject();
-    }
-    else if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
+    if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
     {
         ghost_->changeMode(ghost_->getScatterMode());
     }
@@ -22,8 +18,8 @@ void PinkyChaseMode::targetObject()
         {
             CoordinatesXY ghostPosition = ghost_->getPosition();
 
-            CoordinatesXY pacmanPosition = PacMan::getInstance()->getPosition();
-            Direction pacmanDirection = PacMan::getInstance()->getDirection();
+            CoordinatesXY pacmanPosition = PacMan::getInstance().getPosition();
+            Direction pacmanDirection = PacMan::getInstance().getDirection();
 
             CoordinatesXY target = directionMeasurement_.computeTargetPoint(pacmanDirection, pacmanPosition, PINKY_POSITION_OFFSET);
 

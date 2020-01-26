@@ -9,23 +9,22 @@
 class GhostMode
 {
 public:
-	GhostMode() = default;
-	GhostMode(const GhostMode&) = delete;
-	GhostMode& operator=(const GhostMode&) = delete;
-	virtual ~GhostMode() = default;
+    GhostMode() = default;
+    GhostMode(const GhostMode&) = delete;
+    GhostMode& operator=(const GhostMode&) = delete;
+    virtual ~GhostMode() = default;
 
-	void setGhost(Ghost*);
-
-	virtual void targetObject() = 0;
-	virtual bool isGateObstructionUp() const = 0;
-	virtual bool isGateObstructionRight() const = 0;
-	virtual bool isGateObstructionDown() const = 0;
-	virtual bool isGateObstructionLeft() const = 0;
+    void         setGhost(Ghost*);
+    virtual void targetObject() = 0;
+    virtual bool isPacManCollision() = 0;
+    virtual bool isGateObstructionUp() const = 0;
+    virtual bool isGateObstructionRight() const = 0;
+    virtual bool isGateObstructionDown() const = 0;
+    virtual bool isGateObstructionLeft() const = 0;
 
 protected:
-	//std::weak_ptr<Ghost> ghost_;
-	Ghost* ghost_;
-	DirectionMeasurement directionMeasurement_;
+    Ghost*               ghost_;
+    DirectionMeasurement directionMeasurement_;
 };
 
 #endif // !GHOST_MODE_H

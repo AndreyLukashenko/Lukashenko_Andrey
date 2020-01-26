@@ -98,6 +98,9 @@
     <ClCompile Include="ClydeChaseMode.cpp">
       <Filter>Исходные файлы\GhostMode\ChaseModes</Filter>
     </ClCompile>
+    <ClCompile Include="Maze.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.hpp">
@@ -169,14 +172,11 @@
     <ClInclude Include="InkyChaseMode.hpp">
       <Filter>Файлы заголовков\GhostMode\ChaseModes</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ClydeChaseMode.h">
       <Filter>Файлы заголовков\GhostMode\ChaseModes</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="PacManApp1.rc" />
+    <ClInclude Include="Maze.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ void EnterCageMode::targetObject()
         if (ghost_->getPosition() == ENTER_CAGE_POINT)
         {
             ghost_->setColor(ghost_->getInitialColor());
+            ghost_->setCurrentSpeed(ghost_->getBasicSpeed());
             ghost_->changeMode(ghost_->getLeaveCageMode());
         }
         else
@@ -29,6 +30,12 @@ void EnterCageMode::targetObject()
         }
 
     }
+}
+
+
+bool EnterCageMode::isPacManCollision()
+{
+    return false;
 }
 
 

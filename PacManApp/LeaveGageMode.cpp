@@ -31,6 +31,12 @@ void LeaveCageMode::targetObject()
 }
 
 
+bool LeaveCageMode::isPacManCollision()
+{
+    return false;
+}
+
+
 bool LeaveCageMode::isGateObstructionUp() const
 {
     return true;

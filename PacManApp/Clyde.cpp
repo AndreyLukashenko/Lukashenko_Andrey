@@ -9,9 +9,9 @@ Clyde::Clyde() : Ghost(CLYDE_INITIAL_POINT, Direction::UP, CHARACTER_COLOR::CLYD
 }
 
 
-std::shared_ptr<Clyde> Clyde::getInstance()
+Clyde& Clyde::getInstance()
 {
-    static std::shared_ptr<Clyde> instance_ = std::make_shared<Clyde>();
+    static Clyde instance_;
 
     return instance_;
 }
@@ -19,18 +19,10 @@ std::shared_ptr<Clyde> Clyde::getInstance()
 
 void Clyde::reset()
 {
-    if (oldChar_ == FRUIT || oldChar_ == GATE)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::WHITE);
-    else if (oldChar_ == PILL)
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::GREEN);
-    else
-        console_->setChar(position_.x, position_.y, oldChar_, COLOR::BLACK);
-
     position_ = oldPosition_ = CLYDE_INITIAL_POINT;
     changeDirection(Direction::UP);
     color_ = CHARACTER_COLOR::CLYDE;
     changeMode(getInitialMode());
-    oldChar_ = SPACE;
     drawCharacter();
 }
 

@@ -2,11 +2,7 @@
 
 void ClydeChaseMode::targetObject()
 {
-    if (PacMan::getInstance()->getPacManMode() == PACMAN_MODE::GODMODE)
-    {
-        ChaseMode::targetObject();
-    }
-    else if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
+    if (timer_.elapsedSeconds() > TIMER_CHASE_MODE)
     {
         ghost_->changeMode(ghost_->getScatterMode());
     }
@@ -20,7 +16,7 @@ void ClydeChaseMode::targetObject()
         else
         {
             CoordinatesXY ghostPosition = ghost_->getPosition();
-            CoordinatesXY pacmanPosition = PacMan::getInstance()->getPosition();
+            CoordinatesXY pacmanPosition = PacMan::getInstance().getPosition();
             double distance = directionMeasurement_.computeDistance(ghostPosition, pacmanPosition);
 
             CoordinatesXY target;

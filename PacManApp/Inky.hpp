@@ -6,18 +6,18 @@
 class Inky : public Ghost
 {
 public:
-    Inky();
     Inky(const Inky&) = delete;
     Inky& operator=(const Inky&) = delete;
-    ~Inky() = default;
 
-    static std::shared_ptr<Inky> getInstance();
-
-    virtual void reset() override;
+    static Inky&                       getInstance();
+    virtual void                       reset() override;
     virtual std::unique_ptr<GhostMode> getInitialMode() const override;
     virtual std::unique_ptr<GhostMode> getChaseMode() const override;
     virtual std::unique_ptr<GhostMode> getScatterMode() const override;
 
+private:
+    Inky();
+    ~Inky() = default;
 };
 
 #endif // !INKY_H
